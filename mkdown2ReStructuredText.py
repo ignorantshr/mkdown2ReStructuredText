@@ -1,3 +1,7 @@
+# author        :   ignorantshr
+# create_date   :   2020/04/14 10:11 AM
+# description   :   convert mkdown to ReStructuredText
+
 # coding=utf-8
 import os
 
@@ -201,7 +205,8 @@ class mkdown2ReStructuredText:
             result_lines.append(self._handle_line_inner(line))
 
         tpm_file = os.path.basename(source_path)
-        with open(os.path.join(dst_path, tpm_file[:len(tpm_file) - 2] + "rst"), 'w') as f:
+        with open(os.path.join(dst_path, tpm_file[:len(tpm_file) - 2] +
+                  "rst"), 'w') as f:
             f.writelines(result_lines)
 
     def _list_dir(self, source_dir, dst_dir):
@@ -230,9 +235,3 @@ class mkdown2ReStructuredText:
         self._convert(
             os.path.normpath(source_file),
             os.path.normpath(destination_path))
-
-
-# 路径中存在中文时需要解码
-# c = mkdown2Sphinx()
-# c.convert_from_dir('D:/mkdocs/work/docs/虚拟机转换'.decode('utf-8'), 'D:\AtomDoc\docs\source\Operation\Vm_convert')
-# c.convert_from_file('D:/mkdocs/work/docs/虚拟机转换/virt-p2v介绍.md'.decode('utf-8'), 'D:\AtomDoc\docs\source\Operation\Vm_convert')
